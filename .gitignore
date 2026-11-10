@@ -1,0 +1,23 @@
+# Project specific exclusion
+S1000DContainerizationScript_Info.txt
+
+# Python cache & runtime
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Logs & temporary run outputs
+logs/
+output*/
+*.log
+
+# Test data & test scripts
+test*/
+*test*/
+*.test
+sample*/
+*.sample
+
+# Analysis reports (optional/scratch)
+zoom_out_report.md
+remediation_spec.md

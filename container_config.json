@@ -1,0 +1,29 @@
+{
+  "$schema": "./container_config.schema.json",
+  "container_info_code": "914",
+  "use_config_info_code": false,
+  "container_default_dcv": "Z",
+  "container_default_sdc": "A000",
+  "create_container_for_single_dms": true,
+  "create_referenced_applic_group": false,
+  "excluded_info_codes": [
+    "000", "001", "002", "003", "004", "005", "006", "007", "008", "009",
+    "00A", "00B", "00C", "00D", "00E", "00F", "00G", "00H", "00J", "00K",
+    "00L", "00M", "00N", "00P", "00Q", "00R", "00S", "00T", "00U", "00V",
+    "00W", "00X", "00Y", "00Z"
+  ],
+  "override_rpc_enterprise_code": null,
+  "override_originator_enterprise_code": null,
+  "container_issue_number": "001",
+  "container_inwork_number": "00",
+  "container_issue_year": "2025",
+  "container_issue_month": "09",
+  "container_issue_day": "19",
+  "use_fixed_reason_for_update": true,
+  "fixed_reason_for_update_text": "Container data module automatically generated to group variants.",
+  "remove_issue_info_from_content_refs": true,
+  "remove_language_from_content_refs": true,
+  "remove_ident_extension_from_content_refs": true,
+  "remove_applic_ref_id_from_content_refs": true,
+  "generate_applic_display_text": true
+}

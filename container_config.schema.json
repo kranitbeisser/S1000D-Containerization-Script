@@ -1,0 +1,125 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "S1000D Containerization Script Configuration",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Path to the JSON Schema file."
+    },
+    "container_info_code": {
+      "type": "string",
+      "default": "914",
+      "description": "The infoCode to use for newly generated container DMs (S1000D specifies '914' for container modules)."
+    },
+    "use_config_info_code": {
+      "type": "boolean",
+      "default": false,
+      "description": "If true, all generated container DMs use 'container_info_code' (with infoCodeVariant 'A') and group all non-excluded DMs sharing the same SNS, disassemblyCode, itemLocationCode, and language into a single container. If false, DMs are grouped separately by their original infoCode and infoCodeVariant, which the container inherits."
+    },
+    "container_default_dcv": {
+      "type": "string",
+      "default": "Z",
+      "description": "The default disassemblyCodeVariant to use for the container DM."
+    },
+    "container_default_sdc": {
+      "type": "string",
+      "default": "A000",
+      "description": "The default systemDiffCode to use for the container DM."
+    },
+    "create_container_for_single_dms": {
+      "type": "boolean",
+      "default": true,
+      "description": "If true, a container will be created even for single-member groups."
+    },
+    "create_referenced_applic_group": {
+      "type": "boolean",
+      "default": false,
+      "description": "If true, generates a <referencedApplicGroup> in the content section of the container with cross-referenced applicability statements for each member."
+    },
+    "excluded_info_codes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "A list of exact 3-character infoCode strings (case-insensitive, e.g., '000', '00W') to exclude from container grouping."
+    },
+    "override_rpc_enterprise_code": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": null,
+      "description": "If set to a string, overrides the enterpriseCode attribute on <responsiblePartnerCompany> in new containers. If null, retains the enterpriseCode from the primary (alphabetically first) grouped DM."
+    },
+    "override_originator_enterprise_code": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": null,
+      "description": "If set to a string, overrides the enterpriseCode attribute on <originator> in new containers. If null, retains the enterpriseCode from the primary (alphabetically first) grouped DM."
+    },
+    "container_issue_number": {
+      "type": "string",
+      "default": "001",
+      "description": "A fixed issue number for all new containers."
+    },
+    "container_inwork_number": {
+      "type": "string",
+      "default": "00",
+      "description": "A fixed inWork number for all new containers."
+    },
+    "container_issue_year": {
+      "type": "string",
+      "default": "2025",
+      "description": "A fixed year for the issue date of new containers."
+    },
+    "container_issue_month": {
+      "type": "string",
+      "default": "09",
+      "description": "A fixed month for the issue date of new containers."
+    },
+    "container_issue_day": {
+      "type": "string",
+      "default": "19",
+      "description": "A fixed day for the issue date of new containers."
+    },
+    "use_fixed_reason_for_update": {
+      "type": "boolean",
+      "default": true,
+      "description": "If true, replaces any <reasonForUpdate> elements in new containers with a single <reasonForUpdate> containing 'fixed_reason_for_update_text'. If false, retains existing <reasonForUpdate> elements from the primary grouped DM."
+    },
+    "fixed_reason_for_update_text": {
+      "type": "string",
+      "default": "Container data module automatically generated to group variants.",
+      "description": "The fixed text to insert into <reasonForUpdate>."
+    },
+    "remove_issue_info_from_content_refs": {
+      "type": "boolean",
+      "default": true,
+      "description": "If true, removes <issueInfo> from <dmRefIdent> and <pmRefIdent> in the content section of all processed modules to satisfy BRDP-S1-00573 and project BREX rules."
+    },
+    "remove_language_from_content_refs": {
+      "type": "boolean",
+      "default": true,
+      "description": "If true, removes <language> from <dmRefIdent> in the content section of all processed modules to satisfy project BREX rules."
+    },
+    "remove_ident_extension_from_content_refs": {
+      "type": "boolean",
+      "default": true,
+      "description": "If true, removes <identExtension> from <dmRefIdent> in the content section of all processed modules to satisfy project BREX rules."
+    },
+    "remove_applic_ref_id_from_content_refs": {
+      "type": "boolean",
+      "default": true,
+      "description": "If true, strips the 'applicRefId' attribute from <dmRef> elements in the content section to satisfy project BREX rules. Automatically disables 'create_referenced_applic_group'."
+    },
+    "generate_applic_display_text": {
+      "type": "boolean",
+      "default": true,
+      "description": "If true, generates human-readable display text within <applic> to satisfy BRDP-S1-00547."
+    }
+  },
+  "additionalProperties": false
+}
